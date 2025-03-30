@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protein Power Calculator 💪</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { 
+            background: #f8f9fa;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+        
+        .calculator { 
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transform: translateY(0);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 3px solid #e9ecef;
+        }
+        
+        .calculator:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .result {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .result::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,165,0,0.1), transparent);
+            animation: shine 3s infinite;
+        }
+        
+        .show-result {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        @keyframes protein-party {
+            0% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-20px) rotate(10deg); }
+            50% { transform: translateY(0) rotate(-10deg); }
+            75% { transform: translateY(-10px) rotate(5deg); }
+            100% { transform: translateY(0) rotate(0deg); }
+        }
+        
+        @keyframes muscle-flex {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-50%) rotate(45deg); }
+            100% { transform: translateX(150%) rotate(45deg); }
+        }
+        
+        .protein-emoji {
+            animation: protein-party 1s ease infinite;
+            display: inline-block;
+            margin: 0 5px;
+        }
+        
+        .muscle-emoji {
+            animation: muscle-flex 1.5s infinite;
+            display: inline-block;
+        }
+        
+        .title-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .btn-primary {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,123,255,0.3);
+        }
+        
+        .btn-primary:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h2 class="mb-4 title-animation">🥩 Protein Power Calculator 💪</h2>
+        
+        <!-- Input Form -->
+        <div class="mb-3">
+            <label class="form-label">Weight</label>
+            <div class="d-flex align-items-center gap-2">
+                <input type="number" id="weight" class="form-control" required placeholder="Enter weight">
+                <div class="btn-group" role="group">
+                    <input type="radio" class="btn-check" name="unit" id="kg" checked>
+                    <label class="btn btn-outline-primary" for="kg">kg</label>
+                    <input type="radio" class="btn-check" name="unit" id="lbs">
+                    <label class="btn btn-outline-primary" for="lbs">lbs</label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mb-3">
+            <label class="form-label">Activity Level</label>
+            <select id="activity" class="form-select">
+                <option value="1.2">🛋️ Sedentary (couch potato)</option>
+                <option value="1.375">🚶 Lightly Active (casual stroller)</option>
+                <option value="1.55">🏋️ Moderately Active (gym enthusiast)</option>
+                <option value="1.725">🔥 Very Active (fitness freak)</option>
+                <option value="1.9">🏆 Extremely Active (Olympian mode)</option>
+            </select>
+        </div>
+        
+        <div class="mb-3">
+            <label class="form-label">Goal</label>
+            <select id="goal" class="form-select">
+                <option value="0.8">🧘 Maintenance (status quo)</option>
+                <option value="1.2">💪 Muscle Gain (gainz time!)</option>
+                <option value="1.6">🏃 Weight Loss (shredding mode)</option>
+            </select>
+        </div>
+        
+        <button onclick="calculateProtein()" class="btn btn-primary w-100 py-2">
+            🚀 Calculate My Protein!
+        </button>
+        
+        <!-- Results -->
+        <div class="result mt-4 p-3 bg-light rounded">
+            <h4>🎉 Your Daily Protein Needs:</h4>
+            <p id="proteinResult" class="lead my-3"></p>
+            <small class="text-muted">*Results may vary based on individual factors. Consult a nutritionist for exact needs.</small>
+        </div>
+
+        <!-- Affiliate Section -->
+        <div class="mt-4 text-center">
+            <p class="mb-2">🔥 Fuel Your Gains:</p>
+            <a href="https://amzn.to/3DNI6xB" target="_blank" class="btn btn-outline-danger w-100 mb-2">
+                🥛 Premium Whey Protein
+            </a>
+            <a href="https://amzn.to/4iR221I" target="_blank" class="btn btn-outline-success w-100">
+                🌱 Vegan Protein Options
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function calculateProtein() {
+            // Add celebration animation
+            document.querySelector('.calculator').classList.add('protein-party');
+            
+            // Get values
+            const weight = parseFloat(document.getElementById('weight').value);
+            const unit = document.querySelector('input[name="unit"]:checked').id;
+            const activity = parseFloat(document.getElementById('activity').value);
+            const goal = parseFloat(document.getElementById('goal').value);
+            const resultDiv = document.querySelector('.result');
+
+            if (!weight || isNaN(weight)) {
+                alert("Please enter a valid weight 🏋️♂️");
+                return;
+            }
+
+            // Convert units
+            const weightKg = unit === 'lbs' ? weight * 0.453592 : weight;
+
+            // Calculate protein
+            const protein = Math.round(weightKg * activity * goal);
+
+            // Create animated emojis
+            const emojis = ['🍗', '🥚', '🥛', '🥩', '🍤', '🥜'];
+            const animatedEmojis = emojis.map(e => 
+                `<span class="protein-emoji" style="animation-delay: ${Math.random()*1}s">${e}</span>`
+            ).join('');
+
+            // Show results
+            document.getElementById('proteinResult').innerHTML = `
+                <span class="muscle-emoji">💪</span>
+                <strong class="display-4">${protein}g/day</strong>
+                <span class="muscle-emoji">💪</span><br>
+                <small class="text-muted mt-2 d-block">
+                    ${animatedEmojis}<br>
+                    Calculation: ${weightKg.toFixed(1)}kg × ${activity} × ${goal}
+                </small>
+            `;
+
+            // Trigger animations
+            resultDiv.classList.add('show-result');
+            setTimeout(() => {
+                document.querySelector('.calculator').classList.remove('protein-party');
+            }, 1000);
+        }
+
+        // Unit conversion toggle
+        document.querySelectorAll('input[name="unit"]').forEach(radio => {
+            radio.addEventListener('change', () => {
+                const currentWeight = document.getElementById('weight').value;
+                if (currentWeight) {
+                    const newValue = radio.id === 'lbs' 
+                        ? currentWeight * 2.20462 
+                        : currentWeight / 2.20462;
+                    document.getElementById('weight').value = newValue.toFixed(1);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
