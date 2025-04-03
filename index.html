@@ -1,11 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+    
+    <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3285218343422395"
      crossorigin="anonymous"></script>
+     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Protein Power Calculator 💪</title>
+    
+    <!-- Primary Meta Tags -->
+    <title>Protein Calculator - Calculate Your Daily Protein Needs 💪</title>
+    <meta name="description" content="Free protein calculator tool to determine your daily protein requirements based on weight, activity level, and fitness goals. Get personalized protein recommendations in seconds!">
+    <meta name="keywords" content="protein calculator, daily protein intake, protein requirements, muscle gain calculator, weight loss protein, how much protein do I need">
+    <meta name="author" content="CalculateProtein.com">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://calculateprotein.com/">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://calculateprotein.com/">
+    <meta property="og:title" content="Protein Calculator - Calculate Your Daily Protein Needs">
+    <meta property="og:description" content="Free protein calculator tool to determine your daily protein requirements based on weight, activity level, and fitness goals.">
+    <meta property="og:image" content="https://calculateprotein.com/protein-calculator-og.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://calculateprotein.com/">
+    <meta property="twitter:title" content="Protein Calculator - Calculate Your Daily Protein Needs">
+    <meta property="twitter:description" content="Free protein calculator tool to determine your daily protein requirements based on weight, activity level, and fitness goals.">
+    <meta property="twitter:image" content="https://calculateprotein.com/protein-calculator-og.jpg">
+    
+    <!-- Robots -->
+    <meta name="robots" content="index, follow">
+    
+    <!-- Stylesheet -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body { 
@@ -13,6 +54,7 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         .calculator { 
@@ -113,128 +155,760 @@
         .btn-primary:active {
             transform: scale(0.95);
         }
+        
+        /* New styles for enhanced content */
+        .calculator-tabs {
+            margin-bottom: 20px;
+        }
+        
+        .calculator-tabs .nav-link {
+            border-radius: 10px;
+            margin-right: 5px;
+            font-weight: 600;
+            color: #495057;
+        }
+        
+        .calculator-tabs .nav-link.active {
+            background-color: #007bff;
+            color: white;
+        }
+        
+        .info-section {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+            border-left: 4px solid #007bff;
+        }
+        
+        .info-section h3 {
+            color: #007bff;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+        
+        .faq-item {
+            margin-bottom: 15px;
+            border-bottom: 1px solid #e9ecef;
+            padding-bottom: 15px;
+        }
+        
+        .faq-item h4 {
+            font-size: 1.1rem;
+            color: #212529;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .protein-sources {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .protein-source {
+            background: white;
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            flex: 1 1 calc(33.333% - 10px);
+            min-width: 120px;
+            text-align: center;
+        }
+        
+        .protein-source img {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 5px;
+        }
+        
+        .protein-source p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+        
+        .protein-source .amount {
+            font-weight: bold;
+            color: #007bff;
+        }
+        
+        .share-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .share-button {
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .share-button:hover {
+            opacity: 0.9;
+        }
+        
+        .facebook {
+            background-color: #3b5998;
+        }
+        
+        .twitter {
+            background-color: #1da1f2;
+        }
+        
+        .pinterest {
+            background-color: #bd081c;
+        }
+        
+        .email {
+            background-color: #848484;
+        }
+        
+        .tab-content {
+            padding: 15px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .protein-source {
+                flex: 1 1 calc(50% - 10px);
+            }
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+        
+        .footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .product-card {
+            border: 1px solid #e9ecef;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .product-card img {
+            max-width: 100px;
+            margin-bottom: 10px;
+        }
+        
+        .product-card h5 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+        
+        .product-card .rating {
+            color: #ffc107;
+            margin-bottom: 10px;
+        }
+        
+        .product-card .price {
+            font-weight: bold;
+            color: #28a745;
+            margin-bottom: 10px;
+        }
+        
+        .history-item {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            padding: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .history-item:hover {
+            background-color: #e9ecef;
+        }
+        
+        .meal-distribution {
+            margin-top: 20px;
+        }
+        
+        .meal-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .meal-item .meal-name {
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+        
+        .meal-item .meal-emoji {
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+        
+        .meal-item .protein-amount {
+            font-weight: bold;
+            color: #007bff;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .action-button {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            font-size: 0.9rem;
+        }
+        
+        .nav-tabs {
+            border-bottom: none;
+            margin-bottom: 15px;
+        }
+        
+        .nav-tabs .nav-link {
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            padding: 8px 15px;
+            margin-right: 5px;
+            color: #495057;
+            background-color: #e9ecef;
+        }
+        
+        .nav-tabs .nav-link.active {
+            color: white;
+            background-color: #007bff;
+        }
     </style>
 </head>
 <body>
-    <div class="calculator">
-        <h2 class="mb-4 title-animation">Protein Power Calculator 💪</h2>
-        
-        <!-- Input Form -->
-        <div class="mb-3">
-            <label class="form-label">Weight</label>
-            <div class="d-flex align-items-center gap-2">
-                <input type="number" id="weight" class="form-control" required placeholder="Enter weight">
-                <div class="btn-group" role="group">
-                    <input type="radio" class="btn-check" name="unit" id="kg" checked>
-                    <label class="btn btn-outline-primary" for="kg">kg</label>
-                    <input type="radio" class="btn-check" name="unit" id="lbs">
-                    <label class="btn btn-outline-primary" for="lbs">lbs</label>
+    <div class="container">
+        <div class="calculator">
+            <h1 class="mb-4 title-animation">Protein Power Calculator 💪</h1>
+            
+            <!-- Calculator Tabs -->
+            <ul class="nav nav-pills calculator-tabs" id="calculatorTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="standard-tab" data-bs-toggle="tab" data-bs-target="#standard" type="button" role="tab" aria-controls="standard" aria-selected="true">Standard</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="muscle-tab" data-bs-toggle="tab" data-bs-target="#muscle" type="button" role="tab" aria-controls="muscle" aria-selected="false">Muscle Gain</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="weight-loss-tab" data-bs-toggle="tab" data-bs-target="#weight-loss" type="button" role="tab" aria-controls="weight-loss" aria-selected="false">Weight Loss</button>
+                </li>
+            </ul>
+            
+            <!-- Tab Content -->
+            <div class="tab-content" id="calculatorTabsContent">
+                <!-- Standard Calculator -->
+                <div class="tab-pane fade show active" id="standard" role="tabpanel" aria-labelledby="standard-tab">
+                    <!-- Input Form -->
+                    <div class="mb-3">
+                        <label class="form-label">Weight</label>
+                        <div class="d-flex align-items-center gap-2">
+                            <input type="number" id="weight-standard" class="form-control" required placeholder="Enter weight">
+                            <div class="btn-group" role="group">
+                                <input type="radio" class="btn-check" name="unit" id="kg" checked>
+                                <label class="btn btn-outline-primary" for="kg">kg</label>
+                                <input type="radio" class="btn-check" name="unit" id="lbs">
+                                <label class="btn btn-outline-primary" for="lbs">lbs</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Activity Level</label>
+                        <select id="activity" class="form-select">
+                            <option value="1.2">🛋️ Sedentary (couch potato)</option>
+                            <option value="1.375">🚶 Lightly Active (casual stroller)</option>
+                            <option value="1.55">🏋️ Moderately Active (gym enthusiast)</option>
+                            <option value="1.725">🔥 Very Active (fitness freak)</option>
+                            <option value="1.9">🏆 Extremely Active (Olympian mode)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Goal</label>
+                        <select id="goal" class="form-select">
+                            <option value="0.8">🧘 Maintenance (status quo)</option>
+                            <option value="1.2">💪 Muscle Gain (gainz time!)</option>
+                            <option value="1.6">🏃 Weight Loss (shredding mode)</option>
+                        </select>
+                    </div>
+                    
+                    <button onclick="calculateProtein()" class="btn btn-primary w-100 py-2">
+                        🚀 Calculate My Protein!
+                    </button>
+                </div>
+                
+                <!-- Muscle Gain Calculator -->
+                <div class="tab-pane fade" id="muscle" role="tabpanel" aria-labelledby="muscle-tab">
+                    <div class="mb-3">
+                        <label class="form-label">Weight</label>
+                        <div class="d-flex align-items-center gap-2">
+                            <input type="number" id="weight-muscle" class="form-control" required placeholder="Enter weight">
+                            <div class="btn-group" role="group">
+                                <input type="radio" class="btn-check" name="unit-muscle" id="kg-muscle" checked>
+                                <label class="btn btn-outline-primary" for="kg-muscle">kg</label>
+                                <input type="radio" class="btn-check" name="unit-muscle" id="lbs-muscle">
+                                <label class="btn btn-outline-primary" for="lbs-muscle">lbs</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Training Experience</label>
+                        <select id="experience" class="form-select">
+                            <option value="1.7">🔰 Beginner (0-1 years)</option>
+                            <option value="1.6">🥈 Intermediate (1-3 years)</option>
+                            <option value="1.5">🥇 Advanced (3+ years)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Training Intensity</label>
+                        <select id="intensity" class="form-select">
+                            <option value="1.1">🔄 Moderate (3-4 sessions/week)</option>
+                            <option value="1.2">⚡ High (5-6 sessions/week)</option>
+                            <option value="1.3">🔥 Extreme (6+ intense sessions/week)</option>
+                        </select>
+                    </div>
+                    
+                    <button onclick="calculateMuscleProtein()" class="btn btn-primary w-100 py-2">
+                        💪 Calculate Muscle Building Protein
+                    </button>
+                </div>
+                
+                <!-- Weight Loss Calculator -->
+                <div class="tab-pane fade" id="weight-loss" role="tabpanel" aria-labelledby="weight-loss-tab">
+                    <div class="mb-3">
+                        <label class="form-label">Weight</label>
+                        <div class="d-flex align-items-center gap-2">
+                            <input type="number" id="weight-loss" class="form-control" required placeholder="Enter weight">
+                            <div class="btn-group" role="group">
+                                <input type="radio" class="btn-check" name="unit-loss" id="kg-loss" checked>
+                                <label class="btn btn-outline-primary" for="kg-loss">kg</label>
+                                <input type="radio" class="btn-check" name="unit-loss" id="lbs-loss">
+                                <label class="btn btn-outline-primary" for="lbs-loss">lbs</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Body Fat % (estimate)</label>
+                        <select id="bodyfat" class="form-select">
+                            <option value="1.2">🥑 Low (5-15%)</option>
+                            <option value="1.4" selected>🍊 Medium (15-25%)</option>
+                            <option value="1.6">🍐 High (25%+)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Calorie Deficit</label>
+                        <select id="deficit" class="form-select">
+                            <option value="1.0">🐢 Mild (250 calories/day)</option>
+                            <option value="1.1" selected>🐇 Moderate (500 calories/day)</option>
+                            <option value="1.2">🐆 Aggressive (750+ calories/day)</option>
+                        </select>
+                    </div>
+                    
+                    <button onclick="calculateWeightLossProtein()" class="btn btn-primary w-100 py-2">
+                        🏃 Calculate Fat Loss Protein
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Results -->
+            <div class="result mt-4 p-3 bg-light rounded">
+                <h4>🎉 Your Daily Protein Needs:</h4>
+                <p id="proteinResult" class="lead my-3"></p>
+                <div id="proteinRange" class="my-3 d-none">
+                    <p class="mb-1">Recommended Range:</p>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <div class="d-flex justify-content-between mt-1">
+                        <small id="minProtein">0g</small>
+                        <small id="maxProtein">0g</small>
+                    </div>
+                </div>
+                
+                <!-- Meal Distribution -->
+                <div id="mealDistribution" class="meal-distribution d-none">
+                    <h5 class="mb-3">Daily Meal Distribution:</h5>
+                    <div class="meal-item">
+                        <div class="meal-name"><span class="meal-emoji">🍳</span> Breakfast</div>
+                        <div class="protein-amount" id="breakfastProtein">0g</div>
+                    </div>
+                    <div class="progress mb-3">
+                        <div class="progress-bar bg-success" id="breakfastBar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    
+                    <div class="meal-item">
+                        <div class="meal-name"><span class="meal-emoji">🥗</span> Lunch</div>
+                        <div class="protein-amount" id="lunchProtein">0g</div>
+                    </div>
+                    <div class="progress mb-3">
+                        <div class="progress-bar bg-info" id="lunchBar" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    
+                    <div class="meal-item">
+                        <div class="meal-name"><span class="meal-emoji">🍲</span> Dinner</div>
+                        <div class="protein-amount" id="dinnerProtein">0g</div>
+                    </div>
+                    <div class="progress mb-3">
+                        <div class="progress-bar bg-primary" id="dinnerBar" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    
+                    <div class="meal-item">
+                        <div class="meal-name"><span class="meal-emoji">🥤</span> Snack</div>
+                        <div class="protein-amount" id="snackProtein">0g</div>
+                    </div>
+                    <div class="progress mb-3">
+                        <div class="progress-bar bg-warning" id="snackBar" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+                
+                <small class="text-muted">*Results may vary based on individual factors. Consult a nutritionist for exact needs.</small>
+                
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button class="btn btn-sm btn-outline-primary action-button" onclick="printResults()">
+                        <i class="bi bi-printer"></i> Print
+                    </button>
+                    <button class="btn btn-sm btn-outline-success action-button" onclick="emailResults()">
+                        <i class="bi bi-envelope"></i> Email
+                    </button>
+                </div>
+                
+                <!-- Share Results -->
+                <div class="mt-3">
+                    <p class="mb-2">📊 Share Your Results:</p>
+                    <div class="share-buttons">
+                        <a href="#" class="share-button facebook" onclick="shareResults('facebook')"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="share-button twitter" onclick="shareResults('twitter')"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="share-button pinterest" onclick="shareResults('pinterest')"><i class="bi bi-pinterest"></i></a>
+                        <a href="#" class="share-button email" onclick="shareResults('email')"><i class="bi bi-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Calculation History -->
+            <div class="mt-4">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <h5 class="mb-0">Previous Calculations</h5>
+                    <button class="btn btn-sm btn-outline-secondary" onclick="updateHistoryDisplay()">
+                        <i class="bi bi-arrow-clockwise"></i> Refresh
+                    </button>
+                </div>
+                <div id="calculationHistory" class="calculation-history">
+                    <p class="text-muted">No previous calculations</p>
+                </div>
+            </div>
+
+            <!-- Affiliate Section -->
+            <div class="mt-4">
+                <h4 class="mb-3">🔥 Recommended Protein Supplements:</h4>
+                
+                <!-- Product Tabs -->
+                <ul class="nav nav-tabs" id="productTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="whey-tab" data-bs-toggle="tab" data-bs-target="#whey" type="button" role="tab" aria-controls="whey" aria-selected="true">Whey</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="plant-tab" data-bs-toggle="tab" data-bs-target="#plant" type="button" role="tab" aria-controls="plant" aria-selected="false">Plant-Based</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="accessories-tab" data-bs-toggle="tab" data-bs-target="#accessories" type="button" role="tab" aria-controls="accessories" aria-selected="false">Accessories</button>
+                    </li>
+                </ul>
+                
+                <!-- Product Tab Content -->
+                <div class="tab-content" id="productTabsContent">
+                    <!-- Whey Products -->
+                    <div class="tab-pane fade show active" id="whey" role="tabpanel" aria-labelledby="whey-tab">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <div class="product-card">
+                                    <img src="https://m.media-amazon.com/images/I/61w15aF4O1L._AC_SX679_.jpg" alt="Premium Whey Protein">
+                                    <h5>Whey Concentrate</h5>
+                                    <div class="rating">★★★★☆</div>
+                                    <div class="price">$41.99</div>
+                                    <a href="https://amzn.to/43zBWLX" target="_blank" class="btn btn-outline-danger w-100">
+                                        🥛 View on Amazon
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="product-card">
+                                    <img src="https://m.media-amazon.com/images/I/61-sZpcS8rL._AC_SX679_.jpg" alt="Whey Protein isolate">
+                                    <h5>Premium Whey Isolate</h5>
+                                    <div class="rating">★★★★★</div>
+                                    <div class="price">$59.88</div>
+                                    <a href="https://amzn.to/3XFqkTW" target="_blank" class="btn btn-outline-danger w-100">
+                                        🥛 View on Amazon
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Plant-Based Products -->
+                    <div class="tab-pane fade" id="plant" role="tabpanel" aria-labelledby="plant-tab">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <div class="product-card">
+                                    <img src="https://m.media-amazon.com/images/I/71lu0LrUI+L._AC_UL640_FMwebp_QL65_.jpg" alt="Vegan Protein">
+                                    <h5>Organic vegan protein</h5>
+                                    <div class="rating">★★★★★</div>
+                                    <div class="price">$30.99</div>
+                                    <a href="https://amzn.to/3Yee50A" target="_blank" class="btn btn-outline-success w-100">
+                                        🌱 View on Amazon
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="product-card">
+                                    <img src="https://m.media-amazon.com/images/I/61ytKGuyRRL._AC_UL640_FMwebp_QL65_.jpg" alt="Rice Protein">
+                                    <h5>Vegan Rice Protein</h5>
+                                    <div class="rating">★★★★☆</div>
+                                    <div class="price">$26.49</div>
+                                    <a href="https://amzn.to/43FN2PC" target="_blank" class="btn btn-outline-success w-100">
+                                        🌱 View on Amazon
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Accessories -->
+                    <div class="tab-pane fade" id="accessories" role="tabpanel" aria-labelledby="accessories-tab">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <div class="product-card">
+                                    <img src="https://m.media-amazon.com/images/I/71gz8Q2tRiL._AC_UL640_FMwebp_QL65_.jpg" alt="Blender Bottle">
+                                    <h5>Blender Bottle</h5>
+                                    <div class="rating">★★★★★</div>
+                                    <div class="price">$9.99</div>
+                                    <a href="https://amzn.to/426mRik" target="_blank" class="btn btn-outline-primary w-100">
+                                        🥤 View on Amazon
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="product-card">
+                                    <img src="https://m.media-amazon.com/images/I/81Ciu7IWWkL._AC_UL640_FMwebp_QL65_.jpg" alt="Protein Bars">
+                                    <h5>Protein Bars (Box of 12)</h5>
+                                    <div class="rating">★★★★★</div>
+                                    <div class="price">$24.99</div>
+                                    <a href="https://amzn.to/4i5Qjv5" target="_blank" class="btn btn-outline-primary w-100">
+                                        🍫 View on Amazon
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Educational Content -->
+            <div class="info-section">
+                <h3>Understanding Protein Requirements</h3>
+                <p>Protein is essential for muscle repair, growth, and overall health. Your protein needs vary based on several factors:</p>
+                <ul>
+                    <li><strong>Body Weight:</strong> Heavier individuals typically need more protein</li>
+                    <li><strong>Activity Level:</strong> More active people require higher protein intake</li>
+                    <li><strong>Fitness Goals:</strong> Building muscle or losing weight affects protein requirements</li>
+                    <li><strong>Age:</strong> Protein needs can change throughout your lifespan</li>
+                </ul>
+                
+                <h4 class="mt-4">Common Protein Sources</h4>
+                <div class="protein-sources">
+                    <div class="protein-source">
+                        <span>🥩</span>
+                        <p>Chicken Breast</p>
+                        <p class="amount">31g per 100g</p>
+                    </div>
+                    <div class="protein-source">
+                        <span>🥚</span>
+                        <p>Eggs</p>
+                        <p class="amount">13g per 2 eggs</p>
+                    </div>
+                    <div class="protein-source">
+                        <span>🐟</span>
+                        <p>Salmon</p>
+                        <p class="amount">25g per 100g</p>
+                    </div>
+                    <div class="protein-source">
+                        <span>🥜</span>
+                        <p>Almonds</p>
+                        <p class="amount">21g per 100g</p>
+                    </div>
+                    <div class="protein-source">
+                        <span>🧀</span>
+                        <p>Greek Yogurt</p>
+                        <p class="amount">10g per 100g</p>
+                    </div>
+                    <div class="protein-source">
+                        <span>🌱</span>
+                        <p>Tofu</p>
+                        <p class="amount">8g per 100g</p>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-3">
+                    <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#proteinGuideModal">
+                        📚 Read Full Protein Guide
+                    </a>
+                </div>
+            </div>
+            
+            <!-- FAQ Section -->
+            <div class="info-section mt-4">
+                <h3>Frequently Asked Questions</h3>
+                
+                <div class="faq-item">
+                    <h4>How much protein do I need to build muscle?</h4>
+                    <p>For muscle building, research suggests consuming between 1.6-2.2g of protein per kg of body weight (0.7-1.0g per pound). Higher intakes may be beneficial during caloric deficits or for very active individuals.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h4>Can I eat too much protein?</h4>
+                    <p>For healthy individuals, higher protein intakes are generally safe. However, those with kidney issues should consult a doctor before significantly increasing protein intake. Very high protein diets may also displace other important nutrients if not properly balanced.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h4>When is the best time to consume protein?</h4>
+                    <p>While total daily protein intake is most important, consuming protein within 2 hours after exercise may help optimize muscle recovery and growth. Spreading protein intake throughout the day (every 3-4 hours) is also beneficial for muscle protein synthesis.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h4>Do I need protein supplements?</h4>
+                    <p>Protein supplements aren't necessary if you can meet your protein needs through whole foods. However, they can be convenient for reaching your protein targets, especially for athletes, busy individuals, or those with higher protein requirements.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h4>How much protein for weight loss?</h4>
+                    <p>During weight loss, higher protein intakes (1.6-2.4g per kg or 0.7-1.1g per pound) can help preserve muscle mass while losing fat. Protein also increases satiety, potentially reducing overall calorie intake.</p>
+                </div>
+            </div>
+            
+            <div class="footer">
+                <p>© 2025 <a href="https://calculateprotein.com">CalculateProtein.com</a> | <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Protein Guide Modal -->
+    <div class="modal fade" id="proteinGuideModal" tabindex="-1" aria-labelledby="proteinGuideModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="proteinGuideModalLabel">Complete Protein Guide</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h2>Introduction to Protein</h2>
+                    <p>Protein is one of the three macronutrients (along with carbohydrates and fats) that are essential for human health. It plays a crucial role in building and repairing tissues, making enzymes and hormones, and supporting immune function. Proteins are made up of amino acids, which are often referred to as the "building blocks" of protein.</p>
+                    
+                    <h2>Why Protein Matters</h2>
+                    <p>Protein serves numerous vital functions in the body:</p>
+                    <ul>
+                        <li><strong>Muscle Growth and Repair</strong>: Protein provides the amino acids necessary for building and repairing muscle tissue, especially after exercise.</li>
+                        <li><strong>Enzyme Production</strong>: Most enzymes that facilitate biochemical reactions in the body are proteins.</li>
+                        <li><strong>Hormone Regulation</strong>: Many hormones that regulate metabolism, growth, and other functions are proteins.</li>
+                        <li><strong>Immune Support</strong>: Antibodies that fight infections are proteins.</li>
+                        <li><strong>Transport and Storage</strong>: Proteins help transport molecules throughout the body and store nutrients.</li>
+                        <li><strong>Energy Source</strong>: When carbohydrates and fats are insufficient, protein can be converted to energy.</li>
+                    </ul>
+                    
+                    <h2>Determining Your Protein Needs</h2>
+                    <p>Protein requirements vary based on several factors:</p>
+                    
+                    <h3>Body Weight</h3>
+                    <p>Your body weight is the primary factor in determining protein needs. Heavier individuals generally require more protein to maintain their muscle mass and support bodily functions.</p>
+                    
+                    <h3>Activity Level</h3>
+                    <p>Physical activity significantly impacts protein requirements:</p>
+                    <ul>
+                        <li><strong>Sedentary (minimal exercise)</strong>: Lower protein needs, typically 0.8g per kg of body weight</li>
+                        <li><strong>Lightly Active (light exercise 1-3 days/week)</strong>: Slightly higher needs, around 1.0-1.2g per kg</li>
+                        <li><strong>Moderately Active (moderate exercise 3-5 days/week)</strong>: Increased needs, approximately 1.2-1.4g per kg</li>
+                        <li><strong>Very Active (intense exercise 6-7 days/week)</strong>: Higher requirements, about 1.4-1.7g per kg</li>
+                        <li><strong>Extremely Active (professional athletes, multiple daily training sessions)</strong>: Highest needs, 1.7-2.2g per kg or more</li>
+                    </ul>
+                    
+                    <h3>Fitness Goals</h3>
+                    <p>Your specific fitness objectives also influence protein requirements:</p>
+                    <ul>
+                        <li><strong>Maintenance</strong>: To maintain current muscle mass, 0.8-1.0g per kg is typically sufficient</li>
+                        <li><strong>Muscle Gain</strong>: For building muscle, higher intake of 1.6-2.2g per kg is recommended</li>
+                        <li><strong>Weight Loss</strong>: During caloric restriction, increased protein (1.6-2.4g per kg) helps preserve muscle mass</li>
+                    </ul>
+                    
+                    <!-- More content from protein_guide.md would go here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
-        
-        <div class="mb-3">
-            <label class="form-label">Activity Level</label>
-            <select id="activity" class="form-select">
-                <option value="1.2">🛋️ Sedentary (couch potato)</option>
-                <option value="1.375">🚶 Lightly Active (casual stroller)</option>
-                <option value="1.55">🏋️ Moderately Active (gym enthusiast)</option>
-                <option value="1.725">🔥 Very Active (fitness freak)</option>
-                <option value="1.9">🏆 Extremely Active (Olympian mode)</option>
-            </select>
-        </div>
-        
-        <div class="mb-3">
-            <label class="form-label">Goal</label>
-            <select id="goal" class="form-select">
-                <option value="0.8">🧘 Maintenance (status quo)</option>
-                <option value="1.2">💪 Muscle Gain (gainz time!)</option>
-                <option value="1.6">🏃 Weight Loss (shredding mode)</option>
-            </select>
-        </div>
-        
-        <button onclick="calculateProtein()" class="btn btn-primary w-100 py-2">
-            🚀 Calculate My Protein!
-        </button>
-        
-        <!-- Results -->
-        <div class="result mt-4 p-3 bg-light rounded">
-            <h4>🎉 Your Daily Protein Needs:</h4>
-            <p id="proteinResult" class="lead my-3"></p>
-            <small class="text-muted">*Results may vary based on individual factors. Consult a nutritionist for exact needs.</small>
-        </div>
-
-        <!-- Affiliate Section -->
-        <div class="mt-4 text-center">
-            <p class="mb-2">🔥 Fuel Your Gains:</p>
-            <a href="https://amzn.to/3DNI6xB" target="_blank" class="btn btn-outline-danger w-100 mb-2">
-                🥛 Premium Whey Protein
-            </a>
-            <a href="https://amzn.to/4iR221I" target="_blank" class="btn btn-outline-success w-100">
-                🌱 Vegan Protein Options
-            </a>
-        </div>
     </div>
 
-    <script>
-        function calculateProtein() {
-            // Add celebration animation
-            document.querySelector('.calculator').classList.add('protein-party');
-            
-            // Get values
-            const weight = parseFloat(document.getElementById('weight').value);
-            const unit = document.querySelector('input[name="unit"]:checked').id;
-            const activity = parseFloat(document.getElementById('activity').value);
-            const goal = parseFloat(document.getElementById('goal').value);
-            const resultDiv = document.querySelector('.result');
-
-            if (!weight || isNaN(weight)) {
-                alert("Please enter a valid weight 🏋️♂️");
-                return;
-            }
-
-            // Convert units
-            const weightKg = unit === 'lbs' ? weight * 0.453592 : weight;
-
-            // Calculate protein
-            const protein = Math.round(weightKg * activity * goal);
-
-            // Create animated emojis
-            const emojis = ['🍗', '🥚', '🥛', '🥩', '🍤', '🥜'];
-            const animatedEmojis = emojis.map(e => 
-                `<span class="protein-emoji" style="animation-delay: ${Math.random()*1}s">${e}</span>`
-            ).join('');
-
-            // Show results
-            document.getElementById('proteinResult').innerHTML = `
-                <span class="muscle-emoji">💪</span>
-                <strong class="display-4">${protein}g/day</strong>
-                <span class="muscle-emoji">💪</span><br>
-                <small class="text-muted mt-2 d-block">
-                    ${animatedEmojis}<br>
-                    Calculation: ${weightKg.toFixed(1)}kg × ${activity} × ${goal}
-                </small>
-            `;
-
-            // Trigger animations
-            resultDiv.classList.add('show-result');
-            setTimeout(() => {
-                document.querySelector('.calculator').classList.remove('protein-party');
-            }, 1000);
-        }
-
-        // Unit conversion toggle
-        document.querySelectorAll('input[name="unit"]').forEach(radio => {
-            radio.addEventListener('change', () => {
-                const currentWeight = document.getElementById('weight').value;
-                if (currentWeight) {
-                    const newValue = radio.id === 'lbs' 
-                        ? currentWeight * 2.20462 
-                        : currentWeight / 2.20462;
-                    document.getElementById('weight').value = newValue.toFixed(1);
-                }
-            });
-        });
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Protein Power Calculator",
+      "url": "https://calculateprotein.com/",
+      "description": "Calculate your daily protein requirements based on weight, activity level, and fitness goals.",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "CalculateProtein.com"
+      }
+    }
     </script>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    
+    <!-- Custom JS -->
+    <script src="script.js"></script>
 </body>
 </html>
